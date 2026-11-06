@@ -68,17 +68,3 @@ RN11: Ao reagendar, o horário anterior deve ser liberado.
 RN12: Cada perfil deve acessar somente as funcionalidades permitidas.
 
 RN13: Cada profissional deve estar associado a uma barbearia.
-
-## Diagrama de Classes:
-
-<img width="3136" height="4548" alt="Diagrama de Classes" src="https://github.com/user-attachments/assets/fc3aadf8-bba8-44f4-9717-0a6d16f56da3" />
-
-## Diagrama de Comportamentos
-
-<img width="3136" height="1956" alt="Diagrama de Comportamentos" src="https://github.com/user-attachments/assets/e42765fb-f67e-4f9a-a786-fdcdb3f0a6fb" />
-
-## Modelo de Banco de Dados 
-
-<img width="3136" height="4304" alt="Modelo de Banco de Dados" src="https://github.com/user-attachments/assets/ba48dcf2-cc64-427e-b85a-3d91956fc623" />
-
-
