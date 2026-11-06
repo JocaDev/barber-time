@@ -23,7 +23,7 @@ public class Profissional {
         this.telefone = telefone;
     }
 
-    /** RN06/RN07: não aceita faixa que se sobrepõe a outra. */
+    
     public void adicionarDisponibilidade(Disponibilidade nova) {
         for (Disponibilidade existente : disponibilidades) {
             if (existente.sobrepoe(nova)) {
