@@ -1,6 +1,6 @@
 package model;
 
-/** Classe base de Cliente e Administrador. */
+
 public abstract class Usuario {
 
     private Long id;
@@ -23,7 +23,7 @@ public abstract class Usuario {
         this.perfil = perfil;
     }
 
-    /** Autenticação simples. TODO: usar BCrypt. */
+
     public boolean autenticar(String email, String senhaHash) {
         return this.ativo
                 && this.email != null && this.email.equalsIgnoreCase(email)
