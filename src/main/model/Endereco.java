@@ -1,6 +1,6 @@
 package model;
 
-/** Endereço vindo do ViaCEP. O número do imóvel fica em Barbearia. */
+
 public class Endereco {
 
     private Long id;
