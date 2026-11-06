@@ -22,14 +22,14 @@ public class Disponibilidade {
         this.horaFim = horaFim;
     }
 
-    /** True se as duas faixas se cruzam no mesmo dia. */
+   
     public boolean sobrepoe(Disponibilidade outra) {
         return this.diaSemana == outra.diaSemana
                 && this.horaInicio.isBefore(outra.horaFim)
                 && outra.horaInicio.isBefore(this.horaFim);
     }
 
-    /** True se o intervalo cabe inteiro nesta faixa. */
+    
     public boolean contem(DiaSemana dia, LocalTime inicio, LocalTime fim) {
         return this.diaSemana == dia
                 && !inicio.isBefore(horaInicio)
