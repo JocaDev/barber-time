@@ -29,7 +29,7 @@ public class Barbearia {
         this.administrador = administrador;
     }
 
-    /** RN13: vincula o profissional a esta barbearia. */
+    
     public void adicionarProfissional(Profissional profissional) {
         profissional.setBarbearia(this);
         profissionais.add(profissional);
