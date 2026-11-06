@@ -33,13 +33,13 @@ public class Agendamento {
         this.dataHoraFim = inicio.plusMinutes(servico.getDuracaoMinutos());
     }
 
-    /** RN05: confirma e gera o código. */
+    
     public void confirmar() {
         this.status = StatusAgendamento.CONFIRMADO;
         this.codigoConfirmacao = UUID.randomUUID().toString().substring(0, 8).toUpperCase();
     }
 
-    /** RN08/RN09: só cancela se estiver confirmado. */
+    
     public void cancelar() {
         if (status != StatusAgendamento.CONFIRMADO) {
             throw new IllegalStateException("Só é possível cancelar um agendamento confirmado (RN08).");
@@ -47,7 +47,7 @@ public class Agendamento {
         this.status = StatusAgendamento.CANCELADO;
     }
 
-    /** Troca o horário. A disponibilidade do novo horário é validada no service. */
+    
     public void reagendar(LocalDateTime novoInicio) {
         if (status != StatusAgendamento.CONFIRMADO) {
             throw new IllegalStateException("Só é possível reagendar um agendamento confirmado.");
@@ -55,7 +55,7 @@ public class Agendamento {
         definirHorario(novoInicio);
     }
 
-    /** RN04: True se ocupa o intervalo informado. */
+   
     public boolean conflitaCom(LocalDateTime inicio, LocalDateTime fim) {
         return status == StatusAgendamento.CONFIRMADO
                 && dataHoraInicio.isBefore(fim)
