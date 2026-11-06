@@ -12,3 +12,7 @@
 *A principio utilizaremos o ViaCEP para validar endereços.*
 
 *O ViaCEP é uma API gratuita de consulta de CEPs brasileiros que permite obter informações de endereço, como logradouro, bairro, cidade, estado e código IBGE, a partir de um CEP informado pelo usuário.*
+
+## RFs:
+
+*RF01: O Cliente deve ser capaz de logar no sistema e entrar na área de cliente*
