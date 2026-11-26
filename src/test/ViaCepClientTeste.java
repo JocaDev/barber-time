@@ -1,5 +1,5 @@
-import client.ViaCepClient;
-import dto.ViaCepResponseDTO;
+import br.com.barbertime.client.ViaCepClient;
+import br.com.barbertime.dto.ViaCepResponseDTO;
 
 /** Teste isolado do ViaCEP: parte offline (JSON) e parte online (requisição real). */
 public class ViaCepClientTeste {
