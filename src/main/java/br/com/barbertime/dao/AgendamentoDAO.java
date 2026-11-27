@@ -1,40 +1,27 @@
 package br.com.barbertime.dao;
 
-import br.com.barbertime.infra.ConnectionSingleton;
 import br.com.barbertime.model.Agendamento;
+import br.com.barbertime.model.StatusAgendamento;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
 
-public class AgendamentoDAO {
 
-    public void criar(Agendamento agendamento) throws SQLException {
+public interface AgendamentoDAO {
 
-        String sql = """
-            INSERT INTO agendamento
-            (cliente_id, profissional_id, servico_id,
-             data_hora_inicio, data_hora_fim, status,
-             codigo_confirmacao)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        """;
+    
+    Agendamento inserir(Agendamento agendamento);
 
-        Connection connection = ConnectionSingleton.getConnection();
+    
+    void atualizar(Agendamento agendamento);
 
-        PreparedStatement stmt = connection.prepareStatement(sql);
+    Optional<Agendamento> buscarPorId(Long id);
 
-        stmt.setLong(1, agendamento.getCliente().getId());
-        stmt.setLong(2, agendamento.getProfissional().getId());
-        stmt.setLong(3, agendamento.getServico().getId());
-        stmt.setTimestamp(4,
-                java.sql.Timestamp.valueOf(agendamento.getDataHoraInicio()));
-        stmt.setTimestamp(5,
-                java.sql.Timestamp.valueOf(agendamento.getDataHoraFim()));
-        stmt.setString(6, agendamento.getStatus().name());
-        stmt.setString(7, agendamento.getCodigoConfirmacao());
+    
+    List<Agendamento> listar(Long clienteId, Long profissionalId, StatusAgendamento status);
 
-        stmt.executeUpdate();
+    List<Agendamento> listarPorProfissional(Long profissionalId);
 
-        stmt.close();
-    }
+   
+    void remover(Long id);
 }

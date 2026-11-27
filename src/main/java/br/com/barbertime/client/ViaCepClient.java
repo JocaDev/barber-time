@@ -11,7 +11,7 @@ import java.time.Duration;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/** Cliente HTTP do ViaCEP (usa só o JDK). */
+
 public class ViaCepClient {
 
     private static final String URL_BASE = "https://viacep.com.br/ws/%s/json/";
@@ -20,7 +20,7 @@ public class ViaCepClient {
             .connectTimeout(Duration.ofSeconds(5))
             .build();
 
-    /** Consulta o CEP (8 dígitos, com ou sem hífen). */
+   
     public ViaCepResponseDTO consultar(String cep) throws IOException, InterruptedException {
         String cepLimpo = cep == null ? "" : cep.replaceAll("\\D", "");
         if (cepLimpo.length() != 8) {
@@ -41,7 +41,7 @@ public class ViaCepClient {
         return converter(response.body());
     }
 
-    /** Converte o JSON em DTO. Público para poder testar. */
+  
     public static ViaCepResponseDTO converter(String json) {
         ViaCepResponseDTO dto = new ViaCepResponseDTO();
         // CEP inexistente retorna {"erro": true}

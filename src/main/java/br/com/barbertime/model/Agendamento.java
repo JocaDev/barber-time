@@ -48,6 +48,13 @@ public class Agendamento {
     }
 
     
+    public void concluir() {
+        if (status != StatusAgendamento.CONFIRMADO) {
+            throw new IllegalStateException("Só é possível concluir um agendamento confirmado.");
+        }
+        this.status = StatusAgendamento.CONCLUIDO;
+    }
+
     public void reagendar(LocalDateTime novoInicio) {
         if (status != StatusAgendamento.CONFIRMADO) {
             throw new IllegalStateException("Só é possível reagendar um agendamento confirmado.");
@@ -70,6 +77,11 @@ public class Agendamento {
     public void setProfissional(Profissional profissional) { this.profissional = profissional; }
     public Servico getServico() { return servico; }
     public void setServico(Servico servico) { this.servico = servico; }
+    public void setDataHoraInicio(LocalDateTime dataHoraInicio) { this.dataHoraInicio = dataHoraInicio; }
+    public void setDataHoraFim(LocalDateTime dataHoraFim) { this.dataHoraFim = dataHoraFim; }
+    public void setStatus(StatusAgendamento status) { this.status = status; }
+    public void setCodigoConfirmacao(String codigoConfirmacao) { this.codigoConfirmacao = codigoConfirmacao; }
+    public void setCriadoEm(LocalDateTime criadoEm) { this.criadoEm = criadoEm; }
     public LocalDateTime getDataHoraInicio() { return dataHoraInicio; }
     public LocalDateTime getDataHoraFim() { return dataHoraFim; }
     public StatusAgendamento getStatus() { return status; }

@@ -4,11 +4,21 @@ import java.time.LocalDateTime;
 
 public class AgendamentoRequestDTO {
 
+    
+    private Long clienteId;
     private Long profissionalId;
     private Long servicoId;
     private LocalDateTime dataHoraInicio;
 
     public AgendamentoRequestDTO() {
+    }
+
+    public Long getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(Long clienteId) {
+        this.clienteId = clienteId;
     }
 
     public Long getProfissionalId() {

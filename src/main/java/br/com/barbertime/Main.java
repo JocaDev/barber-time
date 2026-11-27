@@ -1,13 +1,17 @@
 package br.com.barbertime;
 
 import br.com.barbertime.client.ViaCepClient;
+import br.com.barbertime.dao.memoria.AgendamentoDAOMemoria;
+import br.com.barbertime.exception.ConflitoException;
 import br.com.barbertime.model.*;
 import br.com.barbertime.service.AgendamentoService;
 import br.com.barbertime.service.EnderecoService;
 
 import java.math.BigDecimal;
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.temporal.TemporalAdjusters;
 
 /** Demonstração: consulta o ViaCEP e testa as regras de agendamento. */
 public class Main {
@@ -42,16 +46,18 @@ public class Main {
         // 3) Agenda, testa conflito, reagenda e cancela
         Cliente cliente = new Cliente(2L, "Maria", "maria@email.com", "hash", "71977770000");
         Cliente outro = new Cliente(3L, "Carlos", "carlos@email.com", "hash", "71966660000");
-        AgendamentoService agenda = new AgendamentoService();
+        AgendamentoService agenda = new AgendamentoService(new AgendamentoDAOMemoria());
 
-        // segunda-feira
-        LocalDateTime horario = LocalDateTime.of(2026, 11, 9, 10, 0);
+        // próxima segunda-feira às 10h (data fixa no passado seria recusada)
+        LocalDateTime horario = LocalDateTime.now()
+                .with(TemporalAdjusters.next(DayOfWeek.MONDAY))
+                .withHour(10).withMinute(0).withSecond(0).withNano(0);
         Agendamento a1 = agenda.agendar(cliente, joao, corte, horario);
         System.out.println("Criado: " + a1);
 
         try {
             agenda.agendar(outro, joao, corte, horario);
-        } catch (IllegalArgumentException e) {
+        } catch (ConflitoException e) {
             System.out.println("Conflito bloqueado: " + e.getMessage());
         }
 

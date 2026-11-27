@@ -1,6 +1,6 @@
 package br.com.barbertime.dto;
 
-/** Resposta JSON do ViaCEP. */
+
 public class ViaCepResponseDTO {
 
     private String cep;

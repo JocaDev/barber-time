@@ -5,7 +5,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>br.com.barvertime</groupId>
+    <!-- corrigido: estava "barvertime" -->
+    <groupId>br.com.barbertime</groupId>
     <artifactId>barber-time</artifactId>
     <version>1.0.0</version>
 
@@ -48,5 +49,19 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Permite subir o servidor com:  mvn compile exec:java -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <mainClass>br.com.barbertime.ServidorApp</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
